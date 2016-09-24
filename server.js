@@ -1,9 +1,7 @@
 "use strict";
 
 const express = require('express');
-const request = require('request');
 const bodyParser = require('body-parser');
-const path = require('path');
 const _ = require('lodash');
 const winston = require('winston');
 
@@ -20,9 +18,6 @@ app.set('view engine', 'ejs');
 
 // Tap into physical directory for webpack assets
 app.use(express.static(__dirname + '/dist'));
-
-// Grabs all valid routes.
-app.use('/', require('./src/routes.js')(db));
 
 // Yields 404 if the user goes to non-existent path.
 app.use((req, res, next) => {
